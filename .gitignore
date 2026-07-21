@@ -1,0 +1,21 @@
+# Archivos fuente/originales: no se despliegan, solo se usan las versiones
+# optimizadas dentro de Imagenes/web/ y Planos/web/
+Imagenes/*
+!Imagenes/web/
+Imagenes/web/*
+!Imagenes/web/Icono Los Alpes.png
+!Imagenes/web/Pareja2.jpeg
+!Imagenes/web/PORTADA FINAL.jpg
+!Imagenes/web/Vista aerea.jpg
+
+Planos/*
+!Planos/web/
+
+# Otros archivos no usados por index.html
+Brochure final.pdf
+Grafica1.jpeg
+Grafica2.jpeg
+Grafica3.jpeg
+Logo.jpeg
+Logo.png
+optimize-images.ps1
