@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vista Parque Los Alpes — Departamentos y dúplex de alto estándar en Osorno. Vive la tranquilidad del campo en la comodidad de la ciudad. 8 tipologías disponibles. Un proyecto de Avifel.">
+    <meta name="keywords" content="departamentos Osorno, Vista Parque Los Alpes, inmobiliaria Osorno, AVIFEL, dúplex Osorno">
+    <meta property="og:title" content="Vista Parque Los Alpes | Departamentos en Osorno">
+    <meta property="og:description" content="Bienvenido al Bienestar Eficiente. 8 tipologías de departamentos y dúplex en Osorno. Un proyecto de Avifel.">
+    <title>Vista Parque Los Alpes | Departamentos en Osorno</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    /* ============================================================
+       VARIABLES & RESET
+    ============================================================ */
+    :root {
+        --navy:       #1B2A4A;
+        --navy-light: #243660;
+        --gold:       #B8975A;
+        --gold-light: #C9A86C;
+        --gold-pale:  #E8D9B8;
+        --cream:      #F5F0E8;
+        --cream-dark: #E4D9C4;
+        --charcoal:   #222222;
+        --gray-light: #F8F6F2;
+        --muted:      #6B6B6B;
+        --white:      #FFFFFF;
+
+        --serif: 'Cormorant Garamond', Georgia, serif;
+        --sans:  'Inter', Arial, sans-serif;
+
+        --ease:   all 0.35s cubic-bezier(.4,0,.2,1);
+        --s-soft: 0 4px 24px rgba(27,42,74,.10);
+        --s-mid:  0 8px 40px rgba(27,42,74,.15);
+        --s-hard: 0 16px 60px rgba(27,42,74,.22);
+        --r:   4px;
+        --rlg: 12px;
+        --max: 1280px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); color: #1a1a1a; background: var(--white); overflow-x: hidden; line-height: 1.6; }
+    img  { display: block; max-width: 100%; height: auto; }
+    a    { text-decoration: none; color: inherit; }
+    ul   { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--sans); }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .lbl {
+        font-family: var(--sans);
+        font-size: .68rem;
+        font-weight: 600;
+        letter-spacing: .25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: .75rem;
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+    }
+    .lbl::before {
+        content: '';
+        display: inline-block;
+        width: 2rem;
+        height: 1px;
+        background: var(--gold);
+        flex-shrink: 0;
+    }
+
+    .ttl {
+        font-family: var(--serif);
+        font-size: clamp(1.85rem, 3.5vw, 2.9rem);
+        font-weight: 500;
+        line-height: 1.18;
+        color: var(--navy);
+        margin-bottom: 1.1rem;
+        letter-spacing: .01em;
+    }
+    .ttl em { font-style: normal; color: inherit; }
+
+    .sub {
+        font-size: .94rem;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.85;
+        max-width: 620px;
+    }
+
+    .divider {
+        width: 3rem;
+        height: 2px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+        margin: 1.25rem 0;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .9rem 2.2rem;
+        font-family: var(--sans);
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        border-radius: var(--r);
+        transition: var(--ease);
+        cursor: pointer;
+    }
+    .btn-gold {
+        background: var(--gold);
+        color: var(--white);
+        border: 2px solid var(--gold);
+    }
+    .btn-gold:hover {
+        background: var(--gold-light);
+        border-color: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(184,151,90,.35);
+    }
+    .btn-outline-w {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid rgba(255,255,255,.65);
+    }
+    .btn-outline-w:hover {
+        background: rgba(255,255,255,.12);
+        border-color: var(--white);
+    }
+    .btn-outline-n {
+        background: transparent;
+        color: var(--navy);
+        border: 2px solid var(--navy);
+    }
+    .btn-outline-n:hover { background: var(--navy); color: var(--white); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 1000;
+        padding: 1.2rem 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: var(--ease);
+    }
+    .nav.scrolled {
+        background: rgba(27,42,74,.97);
+        backdrop-filter: blur(14px);
+        padding: .8rem 2.5rem;
+        box-shadow: 0 2px 24px rgba(0,0,0,.18);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: .85rem; }
+    .nav-logo img {
+        height: 42px; width: auto;
+        object-fit: contain;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-logo-text .bm {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--white);
+        letter-spacing: .04em;
+    }
+    .nav-logo-text .bs {
+        font-size: .58rem;
+        font-weight: 600;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+    .nav-links a {
+        font-size: .7rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.8);
+        transition: var(--ease);
+        position: relative;
+    }
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px; left: 0;
+        width: 0; height: 1px;
+        background: var(--gold);
+        transition: var(--ease);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+
+    .nav-cta { padding: .62rem 1.5rem; font-size: .68rem; }
+
+    .nav-burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        padding: 4px;
+    }
+    .nav-burger span {
+        display: block;
+        width: 24px; height: 2px;
+        background: var(--white);
+        transition: var(--ease);
+        transform-origin: center;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--navy);
+        z-index: 999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75rem;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+        font-family: var(--serif);
+        font-size: 2rem;
+        color: var(--white);
+        transition: var(--ease);
+    }
+    .nav-drawer a:hover { color: var(--gold); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url('Imagenes/web/PORTADA FINAL.jpg') center/cover no-repeat;
+        transform: scale(1.05);
+        transition: transform 9s ease-out;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            140deg,
+            rgba(27,42,74,.88) 0%,
+            rgba(27,42,74,.55) 55%,
+            rgba(27,42,74,.30) 100%
+        );
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        padding-top: 5rem;
+    }
+    .hero-eyebrow {
+        font-size: .65rem;
+        font-weight: 600;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 1.4rem;
+        opacity: 0;
+        animation: fadeUp .8s .25s forwards;
+    }
+    .hero-h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+        font-weight: 500;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 1.4rem;
+        max-width: 720px;
+        opacity: 0;
+        animation: fadeUp .8s .45s forwards;
+    }
+    .hero-h1 em { font-style: normal; color: inherit; }
+    .hero-p {
+        font-size: 1rem;
+        font-weight: 300;
+        color: rgba(255,255,255,.82);
+        line-height: 1.85;
+        max-width: 500px;
+        margin-bottom: 2.4rem;
+        opacity: 0;
+        animation: fadeUp .8s .65s forwards;
+    }
+    .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp .8s .85s forwards;
+    }
+
+    .hero-bar {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        background: rgba(22,34,62,.93);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(184,151,90,.28);
+        padding: 1.35rem 2.5rem;
+        display: flex;
+        justify-content: center;
+    }
+    .hero-feats {
+        display: flex;
+        max-width: var(--max);
+        width: 100%;
+        gap: 0;
+    }
+    .hero-feat {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: .9rem;
+        padding: 0 2.5rem;
+        border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .hero-feat:last-child { border-right: none; }
+    .feat-ico {
+        width: 42px; height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(184,151,90,.14);
+        border: 1px solid rgba(184,151,90,.38);
+        border-radius: 50%;
+        flex-shrink: 0;
+        font-size: 1.05rem;
+    }
+    .feat-txt strong {
+        display: block;
+        font-size: .68rem;
+        font-weight: 600;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--white);
+        margin-bottom: .15rem;
+    }
+    .feat-txt span { font-size: .65rem; color: rgba(255,255,255,.5); letter-spacing: .04em; }
+
+    /* ============================================================
+       SECTION WRAPPER
+    ============================================================ */
+    .sec { padding: 6rem 2.5rem; max-width: var(--max); margin: 0 auto; }
+
+    /* ============================================================
+       PROYECTO
+    ============================================================ */
+    #proyecto { background: var(--gray-light); }
+
+    .proy-inner { max-width: var(--max); margin: 0 auto; padding: 6rem 2.5rem; }
+
+    .proy-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+        margin-top: 3.5rem;
+    }
+
+    .proy-img-wrap { position: relative; }
+    .proy-img-wrap img {
+        width: 100%; height: 560px;
+        object-fit: cover;
+        border-radius: var(--rlg);
+        box-shadow: var(--s-hard);
+    }
+    .proy-badge {
+        position: absolute;
+        bottom: -1.4rem; right: -1.4rem;
+        background: var(--gold);
+        color: var(--white);
+        padding: 1.4rem 1.8rem;
+        border-radius: var(--r);
+        box-shadow: var(--s-mid);
+        text-align: center;
+    }
+    .proy-badge .bn {
+        font-family: var(--serif);
+        font-size: 2.4rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+    .proy-badge .bt {
+        font-size: .62rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        opacity: .85;
+    }
+
+    .proy-feats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        margin-top: 2.2rem;
+    }
+    .pf {
+        display: flex;
+        gap: .9rem;
+        align-items: flex-start;
+        padding: 1.1rem 1.2rem;
+        background: var(--white);
+        border-radius: var(--r);
+        border-left: 3px solid var(--gold);
+        box-shadow: var(--s-soft);
+        transition: var(--ease);
+    }
+    .pf:hover { transform: translateY(-3px); box-shadow: var(--s-mid); }
+    .pf-ico {
+        width: 38px; height: 38px;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(184,151,90,.1);
+        border-radius: 50%;
+        flex-shrink: 0;
+        font-size: 1rem;
+    }
+    .pf-body strong {
+        display: block;
+        font-size: .76rem;
+        font-weight: 600;
+        color: var(--navy);
+        letter-spacing: .04em;
+        margin-bottom: .18rem;
+    }
+    .pf-body span { font-size: .72rem; color: var(--muted); }
+
+    .ubic-strip {
+        background: var(--navy);
+        padding: 5rem 2.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .ubic-strip::before {
+        content: '';
+        position: absolute;
+        top: -30%; left: -6%;
+        width: 460px; height: 460px;
+        background: radial-gradient(circle, rgba(184,151,90,.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .ubic-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: .8fr 1.2fr;
+        gap: 3.5rem;
+        align-items: center;
+        position: relative;
+    }
+    .ubic-text { color: var(--white); }
+    .ubic-text .lbl { color: var(--gold-light); }
+    .ubic-text h3 {
+        font-family: var(--serif);
+        font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--white);
+    }
+    .ubic-text p { color: rgba(255,255,255,.62); font-size: .92rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 420px; }
+    .ubic-link {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        border-bottom: 1px solid rgba(201,168,108,.4);
+        padding-bottom: .3rem;
+        transition: var(--ease);
+    }
+    .ubic-link:hover { color: var(--white); border-color: var(--white); }
+    .ubic-map {
+        position: relative;
+        aspect-ratio: 16/10;
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(184,151,90,.28);
+        border-radius: var(--rlg);
+        overflow: hidden;
+        box-shadow: var(--s-hard);
+    }
+    .ubic-map iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* ============================================================
+       MODELOS
+    ============================================================ */
+    #modelos { padding: 6rem 0; background: var(--white); }
+
+    .mod-header {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 2.5rem 2.8rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .mod-tabs {
+        display: flex;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        border-bottom: 1px solid var(--cream-dark);
+        overflow-x: auto;
+        scrollbar-width: none;
+        gap: 0;
+    }
+    .mod-tabs::-webkit-scrollbar { display: none; }
+
+    .mtab {
+        padding: .95rem 1.5rem;
+        font-size: .7rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        transition: var(--ease);
+        background: none;
+        cursor: pointer;
+        margin-bottom: -1px;
+    }
+    .mtab:hover { color: var(--navy); }
+    .mtab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .mtab.hidden-group { display: none; }
+
+    .mod-group-tabs {
+        display: flex;
+        justify-content: center;
+        gap: .6rem;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 2.5rem 1.75rem;
+    }
+    .gtab {
+        padding: .65rem 1.7rem;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        border-radius: 100px;
+        border: 1.5px solid var(--cream-dark);
+        color: var(--muted);
+        background: var(--white);
+        transition: var(--ease);
+        cursor: pointer;
+    }
+    .gtab:hover:not(.active) { border-color: var(--gold); color: var(--navy); }
+    .gtab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    .mpanel {
+        display: none;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 3rem 2.5rem;
+    }
+    .mpanel.active { display: block; }
+
+    .mlayout {
+        display: grid;
+        grid-template-columns: 1.15fr .85fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    /* Gallery — imagen principal (plano) + imagen(es) secundaria(s) */
+    .mgal { display: flex; flex-direction: column; gap: .9rem; }
+
+    .gal-main {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--rlg);
+        background: var(--cream);
+        border: 1px solid var(--cream-dark);
+        aspect-ratio: 4/3;
+    }
+    .gal-main img {
+        width: 100%; height: 100%;
+        object-fit: contain;
+        padding: 1rem;
+        box-sizing: border-box;
+        transition: transform .6s ease, opacity .3s ease;
+    }
+    .gal-main:hover img { transform: scale(1.03); }
+    .gal-badge {
+        position: absolute;
+        top: 1rem; left: 1rem;
+        background: var(--navy);
+        color: var(--white);
+        padding: .38rem .9rem;
+        font-size: .62rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        border-radius: 100px;
+    }
+
+    .gal-secondary { display: flex; gap: .7rem; }
+    .gal-sec-item {
+        position: relative;
+        flex: 0 0 52%;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border-radius: var(--r);
+        border: 1px solid var(--cream-dark);
+        background: var(--cream);
+        box-shadow: var(--s-soft);
+    }
+    .gal-sec-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gal-sec-item.is-plan img { object-fit: contain; padding: .6rem; box-sizing: border-box; }
+    .gal-sec-label {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        background: rgba(27,42,74,.85);
+        color: var(--white);
+        font-size: .6rem;
+        font-weight: 600;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        text-align: center;
+        padding: .4rem;
+    }
+
+    /* Info panel */
+    .mname {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: var(--navy);
+        margin-bottom: .3rem;
+    }
+    .mtag {
+        font-size: .75rem;
+        font-weight: 500;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.4rem;
+    }
+
+    .mspecs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: .9rem;
+        padding: 1.4rem;
+        background: var(--gray-light);
+        border-radius: var(--rlg);
+        margin-bottom: 1.4rem;
+    }
+    .spec .sv {
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--navy);
+        line-height: 1;
+    }
+    .spec .sl {
+        font-size: .62rem;
+        font-weight: 600;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: .25rem;
+    }
+
+    .mdesc { font-size: .88rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.5rem; }
+
+    .mtags { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.75rem; }
+    .tag {
+        padding: .32rem .8rem;
+        background: var(--cream);
+        border-radius: 100px;
+        font-size: .7rem;
+        font-weight: 500;
+        color: var(--navy);
+        border: 1px solid var(--cream-dark);
+    }
+
+    .mprice {
+        padding: 1.2rem 1.4rem;
+        background: var(--navy);
+        border-radius: var(--r);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.1rem;
+    }
+    .pl { font-family: var(--serif); font-size: 1.05rem; color: var(--white); font-weight: 500; }
+
+    .mctas { display: flex; gap: .7rem; }
+
+    /* ============================================================
+       NOSOTROS
+    ============================================================ */
+    #nosotros { background: var(--navy); position: relative; overflow: hidden; }
+    #nosotros::before {
+        content: '';
+        position: absolute;
+        top: -40%; right: -8%;
+        width: 550px; height: 550px;
+        background: radial-gradient(circle, rgba(184,151,90,.07) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .nos-media {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 6rem 2.5rem 0;
+        position: relative;
+    }
+    .nos-img { position: relative; }
+    .nos-img img {
+        width: 100%;
+        aspect-ratio: 16/7;
+        object-fit: cover;
+        border-radius: var(--rlg);
+        filter: brightness(.94);
+        display: block;
+        box-shadow: var(--s-hard);
+    }
+    .nos-quote {
+        position: absolute;
+        bottom: 2rem; left: 2rem;
+        background: var(--gold);
+        color: var(--white);
+        padding: 1.4rem 1.8rem;
+        border-radius: var(--r);
+        max-width: 300px;
+        box-shadow: var(--s-mid);
+    }
+
+    .nos-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 4rem 2.5rem 6rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+    }
+    .nos-quote p {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-style: italic;
+        line-height: 1.5;
+        margin-bottom: .4rem;
+    }
+    .nos-quote cite { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; opacity: .8; font-style: normal; }
+
+    .nos-txt .ttl { color: var(--white); }
+    .nos-txt .sub { color: rgba(255,255,255,.62); }
+    .nos-txt .divider { margin-bottom: 1.5rem; }
+
+    .valores {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+    }
+    .vcard {
+        padding: 1.4rem;
+        background: rgba(255,255,255,.05);
+        border: 1px solid rgba(255,255,255,.09);
+        border-radius: var(--r);
+        transition: var(--ease);
+    }
+    .vcard:hover { background: rgba(255,255,255,.08); border-color: rgba(184,151,90,.38); }
+    .vico { font-size: 1.35rem; margin-bottom: .65rem; }
+    .vtitle { font-family: var(--serif); font-size: 1.05rem; color: var(--gold-light); margin-bottom: .35rem; }
+    .vdesc { font-size: .78rem; color: rgba(255,255,255,.52); line-height: 1.72; }
+
+    /* ============================================================
+       CONTACTO
+    ============================================================ */
+    #contacto { background: var(--cream); }
+
+    .cont-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 6rem 2.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1.25fr;
+        gap: 5rem;
+        align-items: start;
+    }
+
+    .cdetails { display: flex; flex-direction: column; gap: 1.4rem; margin-top: 2.2rem; }
+    .cdet { display: flex; gap: .9rem; align-items: flex-start; }
+    .cdet-ico {
+        width: 42px; height: 42px;
+        background: var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: .95rem;
+        flex-shrink: 0;
+    }
+    .cdet-txt strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); margin-bottom: .18rem; }
+    .cdet-txt span { font-size: .88rem; color: var(--muted); }
+
+    .form-wrap {
+        background: var(--white);
+        padding: 2.4rem;
+        border-radius: var(--rlg);
+        box-shadow: var(--s-mid);
+    }
+    .form-ttl { font-family: var(--serif); font-size: 1.55rem; color: var(--navy); margin-bottom: .4rem; }
+    .form-sub { font-size: .82rem; color: var(--muted); margin-bottom: 1.8rem; }
+
+    .fg { display: grid; grid-template-columns: 1fr 1fr; gap: .95rem; margin-bottom: .95rem; }
+    .fi { display: flex; flex-direction: column; gap: .38rem; }
+    .fi.full { grid-column: 1 / -1; }
+
+    .fi label { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
+    .fi input, .fi select, .fi textarea {
+        padding: .82rem .95rem;
+        border: 1.5px solid var(--cream-dark);
+        border-radius: var(--r);
+        font-family: var(--sans);
+        font-size: .86rem;
+        color: #1a1a1a;
+        background: var(--white);
+        transition: var(--ease);
+        outline: none;
+    }
+    .fi input:focus, .fi select:focus, .fi textarea:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(184,151,90,.15);
+    }
+    .fi textarea { resize: vertical; min-height: 96px; }
+
+    .fsub { width: 100%; justify-content: center; margin-top: .4rem; }
+    .fleg { text-align: center; font-size: .65rem; color: var(--muted); margin-top: .65rem; line-height: 1.6; }
+    .fleg a { color: var(--gold); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer { background: var(--charcoal); padding: 3.2rem 2.5rem 1.5rem; }
+    .footer-in { max-width: var(--max); margin: 0 auto; }
+
+    .ft {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 3rem;
+        padding-bottom: 2.4rem;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        margin-bottom: 1.5rem;
+    }
+    .fbrand img { height: 46px; width: auto; margin-bottom: .9rem; }
+    .fbrand-name { font-family: var(--serif); font-size: 1.15rem; color: var(--white); margin-bottom: .25rem; }
+    .fbrand-tag { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .9rem; }
+    .fbrand p { font-size: .78rem; color: rgba(255,255,255,.42); line-height: 1.72; max-width: 215px; }
+
+    .fsocial { display: flex; gap: .65rem; margin-top: 1.2rem; }
+    .slink {
+        width: 34px; height: 34px;
+        background: rgba(255,255,255,.08);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: rgba(255,255,255,.5);
+        font-size: .82rem;
+        transition: var(--ease);
+    }
+    .slink:hover { background: var(--gold); color: var(--white); }
+
+    .fcol h4 { font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+    .fcol ul li { margin-bottom: .55rem; }
+    .fcol ul li a { font-size: .8rem; color: rgba(255,255,255,.5); transition: var(--ease); }
+    .fcol ul li a:hover { color: var(--white); }
+
+    .fb {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .fb p, .fb a { font-size: .7rem; color: rgba(255,255,255,.28); transition: var(--ease); }
+    .fb a:hover { color: var(--gold); }
+    .fb-links { display: flex; gap: 1.4rem; }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .rv {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity .7s ease, transform .7s ease;
+    }
+    .rv.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    /* ============================================================
+       BACK TO TOP
+    ============================================================ */
+    .btt {
+        position: fixed;
+        bottom: 2rem; right: 2rem;
+        width: 42px; height: 42px;
+        background: var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.1rem;
+        box-shadow: var(--s-mid);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--ease);
+        z-index: 800;
+        cursor: pointer;
+        border: none;
+    }
+    .btt.on { opacity: 1; pointer-events: all; }
+    .btt:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+    /* ============================================================
+       KEYFRAMES
+    ============================================================ */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       ENTORNO
+    ============================================================ */
+    #entorno { background: var(--white); }
+    .ent-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 6rem 2.5rem;
+    }
+    .ent-head {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+    .ent-head .lbl { justify-content: center; }
+    .ent-head .ttl { margin: 0 auto 1rem; max-width: 560px; }
+    .ent-head .sub { margin: 0 auto; text-align: center; }
+
+    .ent-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+    .ent-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 2.4rem 2.2rem;
+        background: var(--gray-light);
+        border-radius: var(--rlg);
+        border-bottom: 3px solid transparent;
+        transition: var(--ease);
+    }
+    .ent-card:hover {
+        border-bottom-color: var(--gold);
+        box-shadow: var(--s-mid);
+        transform: translateY(-3px);
+        background: var(--white);
+    }
+    .ent-ico {
+        width: 68px; height: 68px;
+        flex-shrink: 0;
+        background: var(--navy);
+        border-radius: var(--rlg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+    }
+    .ent-body strong {
+        display: block;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--navy);
+        letter-spacing: .02em;
+        margin-bottom: .55rem;
+    }
+    .ent-body p {
+        font-size: .88rem;
+        color: var(--muted);
+        line-height: 1.8;
+    }
+    .ent-body ul {
+        margin-top: .9rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+    .ent-poi {
+        padding: .38rem .95rem;
+        background: var(--cream);
+        border-radius: 100px;
+        font-size: .72rem;
+        font-weight: 500;
+        color: var(--navy);
+        border: 1px solid var(--cream-dark);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+        .ent-grid { grid-template-columns: 1fr; }
+        .proy-grid, .nos-inner, .cont-inner, .ubic-inner { grid-template-columns: 1fr; }
+        .proy-badge { right: 1rem; bottom: 1rem; }
+        .nos-quote { left: 1rem; }
+        .ft { grid-template-columns: 1fr 1fr; }
+        .mlayout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+        .ent-grid { grid-template-columns: 1fr; }
+        .nav-links, .nav-cta { display: none; }
+        .nav-burger { display: flex; }
+        .hero-bar { display: none; }
+        .proy-feats { grid-template-columns: 1fr; }
+        .valores { grid-template-columns: 1fr; }
+        .ft { grid-template-columns: 1fr; }
+        .fg { grid-template-columns: 1fr; }
+        .hero-h1 { font-size: 2.3rem; }
+        .hero-btns { flex-direction: column; align-items: flex-start; }
+        .mspecs { grid-template-columns: repeat(2,1fr); }
+        .fb { flex-direction: column; text-align: center; }
+        .mod-header { flex-direction: column; align-items: flex-start; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav class="nav" id="mainNav">
+    <a href="#inicio" class="nav-logo">
+        <img src="Imagenes/web/Icono Los Alpes.png" alt="Vista Parque Los Alpes">
+        <div class="nav-logo-text">
+            <span class="bm">Vista Parque</span>
+            <span class="bs">Los Alpes</span>
+        </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#proyecto">Proyecto</a></li>
+        <li><a href="#entorno">Entorno</a></li>
+        <li><a href="#modelos">Modelos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold nav-cta" data-wa-msg="Hola, me gustaría recibir más información sobre Vista Parque Los Alpes.">Cotizar Ahora</a>
+
+    <button class="nav-burger" id="burger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<nav class="nav-drawer" id="drawer">
+    <button id="drawerClose" style="position:absolute;top:1.5rem;right:2rem;font-size:1.5rem;color:var(--white);cursor:pointer;">✕</button>
+    <a href="#inicio">Inicio</a>
+    <a href="#proyecto">Proyecto</a>
+    <a href="#entorno">Entorno</a>
+    <a href="#modelos">Modelos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO — INICIO
+════════════════════════════════════════════════════════════ -->
+<section id="inicio" class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Osorno, Región de Los Lagos · Un proyecto de Avifel</p>
+        <h1 class="hero-h1">La tranquilidad<br>del campo, la<br>comodidad de la ciudad</h1>
+        <p class="hero-p">Vista Parque Los Alpes propone redefinir la vida en la ciudad, integrando naturaleza, tranquilidad y conectividad en un solo lugar. Bienvenido al bienestar eficiente: ocho tipologías de departamentos y dúplex diseñadas para quienes eligen vivir mejor.</p>
+        <div class="hero-btns">
+            <a href="#modelos" class="btn btn-gold">Conocer Modelos</a>
+            <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-w" data-wa-msg="Hola, me gustaría recibir más información sobre Vista Parque Los Alpes.">Solicitar Información</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     PROYECTO
+════════════════════════════════════════════════════════════ -->
+<section id="proyecto">
+    <div class="proy-inner">
+        <div class="rv">
+            <p class="lbl">Nuestro Proyecto</p>
+            <h2 class="ttl">Diseñado para quienes<br>eligen vivir diferente</h2>
+        </div>
+
+        <div class="proy-grid">
+            <div class="proy-img-wrap rv">
+                <img src="Imagenes/web/Vista aerea.jpg" alt="Edificio Vista Parque Los Alpes">
+                <div class="proy-badge">
+                    <div class="bn">8</div>
+                    <div class="bt">Tipologías<br>Disponibles</div>
+                </div>
+            </div>
+
+            <div class="proy-content">
+                <p class="lbl rv">Enclave en la ciudad</p>
+                <p class="sub rv">Vista Parque Los Alpes es un proyecto que propone redefinir la vida en la ciudad, integrando naturaleza, tranquilidad y conectividad en un solo lugar.</p>
+                <p class="sub rv d1" style="margin-top:.9rem; color:var(--muted);">Sus amplios jardines, terrazas y vistas despejadas invitan a disfrutar del entorno endémico del sur de Chile, sin perder la conectividad a los servicios de la ciudad. Ocho tipologías de departamentos y dúplex diseñadas para brindar la comodidad y versatilidad que ofrece Osorno.</p>
+
+                <div class="proy-feats">
+                    <div class="pf rv d1">
+                        <div class="pf-ico">🌳</div>
+                        <div class="pf-body"><strong>Jardines Interiores</strong><span>Amplios jardines de uso común</span></div>
+                    </div>
+                    <div class="pf rv d2">
+                        <div class="pf-ico">☀️</div>
+                        <div class="pf-body"><strong>Eficiencia Energética</strong><span>Calefacción Inverter Euro A+ en todos los departamentos</span></div>
+                    </div>
+                    <div class="pf rv d3">
+                        <div class="pf-ico">🏡</div>
+                        <div class="pf-body"><strong>Casona Los Alpes</strong><span>Espacio de uso exclusivo para propietarios</span></div>
+                    </div>
+                    <div class="pf rv d4">
+                        <div class="pf-ico">💻</div>
+                        <div class="pf-body"><strong>Home Office</strong><span>Espacio de trabajo en cada torre</span></div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold rv" style="margin-top:2rem;" data-wa-msg="Hola, me gustaría recibir más información sobre Vista Parque Los Alpes.">Solicitar Información</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ubic-strip">
+        <div class="ubic-inner">
+            <div class="ubic-text rv">
+                <p class="lbl">Cómo Llegar</p>
+                <h3>Ubicación Privilegiada en Osorno</h3>
+                <p>Santiago Rosas esq. Avenida Alemania — con conectividad a los servicios de la ciudad y el entorno natural del sur de Chile.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Santiago+Rosas+esq.+Avenida+Alemania%2C+Osorno" target="_blank" rel="noopener" class="ubic-link">Abrir en Google Maps →</a>
+            </div>
+            <div class="ubic-map rv">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.3228989597!2d-73.11717525520716!3d-40.60069891992518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961635c358cfd50f%3A0xd4704809633e87a!2sSantiago%20Rosas%20%26%20Avenida%20Alemania%2C%20Osorno%2C%20Los%20Lagos!5e0!3m2!1ses!2scl!4v1784334105119!5m2!1ses!2scl" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     ENTORNO
+════════════════════════════════════════════════════════════ -->
+<section id="entorno">
+    <div class="ent-inner">
+        <div class="ent-head">
+            <p class="lbl rv">Entorno</p>
+            <h2 class="ttl rv">Un entorno pensado<br>para tu vida cotidiana</h2>
+            <p class="sub rv">Ubicado estratégicamente en Osorno, ciudad que hoy se consolida como uno de los polos urbanos más atractivos del sur de Chile, combinando tradición y una sólida proyección de futuro.</p>
+        </div>
+
+        <div class="ent-grid">
+            <div class="ent-card rv">
+                <div class="ent-ico">🎓</div>
+                <div class="ent-body">
+                    <strong>Educación</strong>
+                    <p>Colegios y centros de estudio de distintos niveles en el entorno de Osorno.</p>
+                    <ul>
+                        <li class="ent-poi">Colegios</li>
+                        <li class="ent-poi">Universidades</li>
+                        <li class="ent-poi">Jardines infantiles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ent-card rv d1">
+                <div class="ent-ico">🏥</div>
+                <div class="ent-body">
+                    <strong>Salud</strong>
+                    <p>Centros de salud y farmacias disponibles en la ciudad de Osorno.</p>
+                    <ul>
+                        <li class="ent-poi">Centros médicos</li>
+                        <li class="ent-poi">Clínicas</li>
+                        <li class="ent-poi">Farmacias</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ent-card rv d2">
+                <div class="ent-ico">🛒</div>
+                <div class="ent-body">
+                    <strong>Comercio</strong>
+                    <p>Supermercados, tiendas y servicios esenciales dentro de la ciudad.</p>
+                    <ul>
+                        <li class="ent-poi">Supermercados</li>
+                        <li class="ent-poi">Comercio local</li>
+                        <li class="ent-poi">Servicios bancarios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ent-card rv d1">
+                <div class="ent-ico">🎭</div>
+                <div class="ent-body">
+                    <strong>Cultura y Recreación</strong>
+                    <p>Oferta cultural y gastronómica que ofrece la ciudad de Osorno.</p>
+                    <ul>
+                        <li class="ent-poi">Vida cultural</li>
+                        <li class="ent-poi">Restaurantes</li>
+                        <li class="ent-poi">Cafés</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ent-card rv d2">
+                <div class="ent-ico">🚴</div>
+                <div class="ent-body">
+                    <strong>Movilidad</strong>
+                    <p>Conectividad vial y de transporte hacia los distintos sectores de la ciudad.</p>
+                    <ul>
+                        <li class="ent-poi">Conectividad vial</li>
+                        <li class="ent-poi">Transporte público</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ent-card rv d3">
+                <div class="ent-ico">🌲</div>
+                <div class="ent-body">
+                    <strong>Naturaleza</strong>
+                    <p>El entorno endémico y las áreas verdes del sur de Chile como telón de fondo del proyecto.</p>
+                    <ul>
+                        <li class="ent-poi">Áreas verdes</li>
+                        <li class="ent-poi">Entorno natural</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     MODELOS
+════════════════════════════════════════════════════════════ -->
+<section id="modelos">
+    <div class="mod-header">
+        <div>
+            <p class="lbl rv">Catálogo de Modelos</p>
+            <h2 class="ttl rv">Encuentra tu<br>hogar ideal</h2>
+        </div>
+        <p class="sub rv" style="text-align:right; max-width:360px;">
+            Ocho tipologías de departamentos y dúplex diseñadas para brindar la comodidad y versatilidad que ofrece Osorno, acompañando cada etapa y forma de vivir.
+        </p>
+    </div>
+
+    <!-- GROUP TABS -->
+    <div class="mod-group-tabs">
+        <button class="gtab active" data-group="deptos">Departamentos</button>
+        <button class="gtab" data-group="duplex">Dúplex</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="mod-tabs">
+        <button class="mtab active" data-panel="0" data-group="deptos">Annecy · 73 m²</button>
+        <button class="mtab" data-panel="1" data-group="deptos">Brienz · 61 m²</button>
+        <button class="mtab" data-panel="2" data-group="deptos">Mont Blanc · 120 m²</button>
+        <button class="mtab" data-panel="3" data-group="deptos">Zermatt · 102 m²</button>
+        <button class="mtab hidden-group" data-panel="4" data-group="duplex">Ginebra · 139 m²</button>
+        <button class="mtab hidden-group" data-panel="5" data-group="duplex">Évian · 134 m²</button>
+        <button class="mtab hidden-group" data-panel="6" data-group="duplex">Samoëns · 136 m²</button>
+        <button class="mtab hidden-group" data-panel="7" data-group="duplex">Chamonix · 137 m²</button>
+    </div>
+
+    <!-- ── PANEL 0: ANNECY ───────────────────────────────────── -->
+    <div class="mpanel active" id="mp0">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano ANNECY B.jpg" alt="Plano Depto. Annecy">
+                    <span class="gal-badge">Depto. Annecy</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item"><img src="Planos/web/Annecy.jpg" alt="Interior Depto. Annecy"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Depto. Annecy</h3>
+                <p class="mtag">Diseñado para crecer contigo</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">73</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
+                </div>
+                <p class="mdesc">Departamento de 73 m² con 2 dormitorios y 2 baños, diseñado para crecer contigo. Incluye ventanas termopanel, cocina equipada, cielo aislante térmico y calefacción Inverter Euro A+ integrada, para un confort térmico óptimo y bajo consumo energético.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Annecy de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Annecy de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 1: BRIENZ ───────────────────────────────────── -->
+    <div class="mpanel" id="mp1">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano BRIENZ A.jpg" alt="Plano Depto. Brienz">
+                    <span class="gal-badge">Depto. Brienz</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item"><img src="Planos/web/Brienz.jpg" alt="Interior Depto. Brienz"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Depto. Brienz</h3>
+                <p class="mtag">Funcionalidad y calidez</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">61</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Baño</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
+                </div>
+                <p class="mdesc">Departamento de 61 m² con 2 dormitorios y 1 baño. Funcionalidad y calidez en cada detalle: la calefacción Inverter Euro A+ asegura un confort térmico óptimo, ahorro energético y cuidado del medioambiente.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Brienz de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Brienz de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 2: MONT BLANC ───────────────────────────────── -->
+    <div class="mpanel" id="mp2">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano MONT BLANC D.jpg" alt="Plano Depto. Mont Blanc">
+                    <span class="gal-badge">Depto. Mont Blanc</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item"><img src="Planos/web/Mont blanc.jpg" alt="Interior Depto. Mont Blanc"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Depto. Mont Blanc</h3>
+                <p class="mtag">Amplitud para disfrutar cada momento</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">120</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
+                </div>
+                <p class="mdesc">Departamento de 120 m² con 3 dormitorios y 3 baños. Amplitud para disfrutar cada momento, con los mismos estándares de eficiencia y confort de todo el proyecto: ventanas termopanel, cocina equipada, cielo aislante térmico y calefacción Inverter integrada.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Mont Blanc de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Mont Blanc de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 3: ZERMATT ──────────────────────────────────── -->
+    <div class="mpanel" id="mp3">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano Zermatt.jpg" alt="Plano Depto. Zermatt">
+                    <span class="gal-badge">Depto. Zermatt</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item"><img src="Planos/web/Zermatt.jpg" alt="Interior Depto. Zermatt"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Depto. Zermatt</h3>
+                <p class="mtag">Versatilidad para cada forma de vivir</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">102</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
+                </div>
+                <p class="mdesc">Departamento de 102 m² con 3 dormitorios y 2 baños. Versatilidad para cada forma de vivir, con terminaciones de piso vinílico y porcelanato en baño y terraza, y calefacción Inverter Euro A+ en todos sus ambientes.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Zermatt de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Zermatt de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 4: GINEBRA (DÚPLEX) ─────────────────────────── -->
+    <div class="mpanel" id="mp4">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano GINEBRA 1.jpg" alt="Plano Dúplex Ginebra — Primer Piso">
+                    <span class="gal-badge">Dúplex Ginebra — Primer Piso</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item is-plan">
+                        <img src="Planos/web/Plano GINEBRA 2.jpg" alt="Plano Dúplex Ginebra — Segundo Piso">
+                        <span class="gal-sec-label">Segundo Piso</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Dúplex Ginebra</h3>
+                <p class="mtag">Estar familiar</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">139</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
+                </div>
+                <p class="mdesc">Dúplex de 139 m² en dos plantas, con 3 dormitorios y 3 baños. Un estar familiar como corazón del segundo piso, pensado para disfrutar en familia con la comodidad y amplitud de todo el proyecto.</p>
+                <div class="mtags">
+                    <span class="tag">Estar Familiar</span>
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Ginebra de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Ginebra de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 5: ÉVIAN (DÚPLEX) ───────────────────────────── -->
+    <div class="mpanel" id="mp5">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano EVIAN 1.jpg" alt="Plano Dúplex Évian — Primer Piso">
+                    <span class="gal-badge">Dúplex Évian — Primer Piso</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item is-plan">
+                        <img src="Planos/web/Plano EVIAN 2.jpg" alt="Plano Dúplex Évian — Segundo Piso">
+                        <span class="gal-sec-label">Segundo Piso</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Dúplex Évian</h3>
+                <p class="mtag">Espacios versátiles para vivir</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">134</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
+                </div>
+                <p class="mdesc">Dúplex de 134 m² en dos plantas, con 3 dormitorios y 3 baños. Espacios versátiles que acompañan distintas formas de vivir, con la calidez y eficiencia de la calefacción Inverter Euro A+ integrada.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Évian de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Évian de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 6: SAMOËNS (DÚPLEX) ─────────────────────────── -->
+    <div class="mpanel" id="mp6">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano SAMOENS 1.jpg" alt="Plano Dúplex Samoëns — Primer Piso">
+                    <span class="gal-badge">Dúplex Samoëns — Primer Piso</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item is-plan">
+                        <img src="Planos/web/Plano SAMOENS 2.jpg" alt="Plano Dúplex Samoëns — Segundo Piso">
+                        <span class="gal-sec-label">Segundo Piso</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Dúplex Samoëns</h3>
+                <p class="mtag">Home office</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">136</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
+                </div>
+                <p class="mdesc">Dúplex de 136 m² en dos plantas, con 2 dormitorios y 3 baños. Incluye un espacio de home office propio, ideal para trabajar desde casa sin perder comodidad.</p>
+                <div class="mtags">
+                    <span class="tag">Home Office</span>
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Samoëns de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Samoëns de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 7: CHAMONIX (DÚPLEX) ────────────────────────── -->
+    <div class="mpanel" id="mp7">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano CHAMONIX 1.jpg" alt="Plano Dúplex Chamonix — Primer Piso">
+                    <span class="gal-badge">Dúplex Chamonix — Primer Piso</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item is-plan">
+                        <img src="Planos/web/Plano CHAMONIX 2.jpg" alt="Plano Dúplex Chamonix — Segundo Piso">
+                        <span class="gal-sec-label">Segundo Piso</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Dúplex Chamonix</h3>
+                <p class="mtag">Estudio Lounge</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">137</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Dormitorio</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
+                </div>
+                <p class="mdesc">Dúplex de 137 m² en dos plantas, con 1 dormitorio y 2 baños. Cuenta con un estudio lounge propio, un ambiente versátil para recibir invitados o disfrutar con calma.</p>
+                <div class="mtags">
+                    <span class="tag">Estudio Lounge</span>
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Chamonix de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Chamonix de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     NOSOTROS
+════════════════════════════════════════════════════════════ -->
+<section id="nosotros">
+    <div class="nos-media">
+        <div class="nos-img rv">
+            <img src="Imagenes/web/Pareja2.jpeg" alt="Pareja disfrutando con calma de Vista Parque Los Alpes">
+            <div class="nos-quote">
+                <p>"Bienvenido al bienestar eficiente"</p>
+                <cite>Vista Parque Los Alpes</cite>
+            </div>
+        </div>
+    </div>
+
+    <div class="nos-inner">
+        <div class="nos-txt">
+            <p class="lbl rv" style="color:var(--gold);">Quiénes Somos</p>
+            <h2 class="ttl rv" style="color:var(--white);">Una visión de bienestar<br>hecha realidad</h2>
+            <div class="divider rv"></div>
+            <p class="sub rv" style="color:rgba(255,255,255,.62);">Vista Parque Los Alpes es un proyecto de Avifel, sinónimo de calidad y responsabilidad en el sur de Chile.</p>
+            <p class="sub rv d1" style="color:rgba(255,255,255,.52); margin-top:.9rem;">Sus amplios jardines, terrazas y vistas despejadas invitan a disfrutar del entorno endémico del sur de Chile, sin perder la conectividad a los servicios de la ciudad de Osorno.</p>
+        </div>
+
+        <div class="valores">
+            <div class="vcard rv d1">
+                <div class="vico">🏔️</div>
+                <h4 class="vtitle">Conexión con la Naturaleza</h4>
+                <p class="vdesc">Amplios jardines, terrazas y vistas despejadas al entorno endémico del sur de Chile.</p>
+            </div>
+            <div class="vcard rv d2">
+                <div class="vico">⚡</div>
+                <h4 class="vtitle">Eficiencia Energética</h4>
+                <p class="vdesc">Calefacción Inverter Euro A+ integrada, confort térmico óptimo y ahorro energético.</p>
+            </div>
+            <div class="vcard rv d3">
+                <div class="vico">🏡</div>
+                <h4 class="vtitle">Diseño con Propósito</h4>
+                <p class="vdesc">Ocho tipologías pensadas para acompañar distintas formas y etapas de vivir.</p>
+            </div>
+            <div class="vcard rv d4">
+                <div class="vico">🤝</div>
+                <h4 class="vtitle">Respaldo Avifel</h4>
+                <p class="vdesc">Un proyecto de Avifel, sinónimo de calidad y responsabilidad en el sur de Chile.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CONTACTO
+════════════════════════════════════════════════════════════ -->
+<section id="contacto">
+    <div class="cont-inner">
+        <div class="cont-txt">
+            <p class="lbl rv">Contacto</p>
+            <h2 class="ttl rv">Demos el<br>primer paso<br>juntos</h2>
+            <div class="divider rv"></div>
+            <p class="sub rv">Nuestro equipo está listo para acompañarte en cada etapa del proceso, desde la primera visita hasta la entrega de tu nuevo hogar.</p>
+
+            <div class="cdetails">
+                <div class="cdet rv d1">
+                    <div class="cdet-ico">📍</div>
+                    <div class="cdet-txt"><strong>Sala de Ventas</strong><span>Santiago Rosas esq. Avenida Alemania, Osorno</span></div>
+                </div>
+                <div class="cdet rv d2">
+                    <div class="cdet-ico">📞</div>
+                    <div class="cdet-txt"><strong>Teléfono</strong><span>+569 9444 7132</span></div>
+                </div>
+                <div class="cdet rv d3">
+                    <div class="cdet-ico">✉️</div>
+                    <div class="cdet-txt"><strong>Correo Electrónico</strong><span>vistaparquelosalpes@avifel.cl</span></div>
+                </div>
+                <div class="cdet rv d4">
+                    <div class="cdet-ico">🕐</div>
+                    <div class="cdet-txt"><strong>Horario de Atención</strong><span>Lunes a Viernes 9:00 – 18:00 hrs · Sábados 10:00 – 14:00 hrs</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-wrap rv">
+            <h3 class="form-ttl">Solicita más información</h3>
+            <p class="form-sub">Completa el formulario y te contactaremos a la brevedad.</p>
+
+            <form id="leadForm" novalidate>
+                <div class="fg">
+                    <div class="fi">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="fi">
+                        <label for="apellido">Apellido *</label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                    </div>
+                    <div class="fi">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.cl" required>
+                    </div>
+                    <div class="fi">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+56 9 XXXX XXXX">
+                    </div>
+                    <div class="fi full">
+                        <label for="modelo">Modelo de Interés</label>
+                        <select id="modelo" name="modelo">
+                            <option value="">Selecciona un modelo</option>
+                            <option value="annecy">Depto. Annecy · 73 m²</option>
+                            <option value="brienz">Depto. Brienz · 61 m²</option>
+                            <option value="montblanc">Depto. Mont Blanc · 120 m²</option>
+                            <option value="zermatt">Depto. Zermatt · 102 m²</option>
+                            <option value="ginebra">Dúplex Ginebra · 139 m²</option>
+                            <option value="evian">Dúplex Évian · 134 m²</option>
+                            <option value="samoens">Dúplex Samoëns · 136 m²</option>
+                            <option value="chamonix">Dúplex Chamonix · 137 m²</option>
+                        </select>
+                    </div>
+                    <div class="fi full">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gold fsub">Enviar Solicitud →</button>
+                <p class="fleg">Al enviar, aceptas nuestra <a href="#">Política de Privacidad</a>. Tus datos son tratados de forma confidencial.</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+    <div class="footer-in">
+        <div class="ft">
+            <div class="fbrand">
+                <img src="Imagenes/web/Icono Los Alpes.png" alt="Logo Vista Parque Los Alpes">
+                <p class="fbrand-name">Vista Parque Los Alpes</p>
+                <p class="fbrand-tag">Bienvenido al Bienestar Eficiente</p>
+                <p>Un proyecto de Avifel. Santiago Rosas esq. Avenida Alemania, Osorno, Región de Los Lagos, Chile.</p>
+                <div class="fsocial">
+                    <a href="#" class="slink" aria-label="Instagram">
+                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#" class="slink" aria-label="Facebook">
+                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="slink" aria-label="WhatsApp" data-wa-msg="Hola, me gustaría recibir más información sobre Vista Parque Los Alpes.">
+                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fcol">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#proyecto">El Proyecto</a></li>
+                    <li><a href="#entorno">Entorno</a></li>
+                    <li><a href="#modelos">Modelos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="fcol">
+                <h4>Modelos</h4>
+                <ul>
+                    <li><a href="#modelos">Depto. Annecy · 73 m²</a></li>
+                    <li><a href="#modelos">Depto. Brienz · 61 m²</a></li>
+                    <li><a href="#modelos">Depto. Mont Blanc · 120 m²</a></li>
+                    <li><a href="#modelos">Depto. Zermatt · 102 m²</a></li>
+                    <li><a href="#modelos">Dúplex Ginebra · 139 m²</a></li>
+                    <li><a href="#modelos">Dúplex Évian · 134 m²</a></li>
+                    <li><a href="#modelos">Dúplex Samoëns · 136 m²</a></li>
+                    <li><a href="#modelos">Dúplex Chamonix · 137 m²</a></li>
+                </ul>
+            </div>
+
+            <div class="fcol">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="#">Santiago Rosas esq. Avenida Alemania, Osorno</a></li>
+                    <li><a href="tel:+56994447132">+569 9444 7132</a></li>
+                    <li><a href="mailto:vistaparquelosalpes@avifel.cl">vistaparquelosalpes@<br>avifel.cl</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fb">
+            <p>© 2026 Vista Parque Los Alpes — AVIFEL. Todos los derechos reservados.</p>
+            <div class="fb-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button class="btt" id="btt" aria-label="Volver al inicio">↑</button>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ─── WhatsApp ────────────────────────────────────────────────── */
+const WA_PHONE = '56994447132';
+function waLink(message) {
+    return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
+}
+document.querySelectorAll('[data-wa-msg]').forEach(el => {
+    el.href = waLink(el.dataset.waMsg);
+});
+
+/* ─── Nav scroll ──────────────────────────────────────────────── */
+const nav = document.getElementById('mainNav');
+const btt = document.getElementById('btt');
+
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 80);
+    btt.classList.toggle('on', y > 500);
+}, { passive: true });
+
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ─── Hero BG subtle zoom ─────────────────────────────────────── */
+window.addEventListener('load', () => document.getElementById('heroBg').classList.add('loaded'));
+
+/* ─── Mobile drawer ───────────────────────────────────────────── */
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+
+burger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    burger.classList.toggle('open', open);
+});
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+function closeDrawer() {
+    drawer.classList.remove('open');
+    burger.classList.remove('open');
+}
+
+/* ─── Scroll reveal ───────────────────────────────────────────── */
+const ro = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }),
+    { threshold: .12, rootMargin: '0px 0px -36px 0px' }
+);
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+/* ─── Active nav link ─────────────────────────────────────────── */
+const anchors  = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+const so = new IntersectionObserver(
+    entries => entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        anchors.forEach(a => a.classList.remove('active'));
+        const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (a) a.classList.add('active');
+    }),
+    { threshold: .35 }
+);
+sections.forEach(s => so.observe(s));
+
+/* ─── Modelos: group tabs (Departamentos / Dúplex) ──────────────── */
+document.querySelectorAll('.gtab').forEach(gtab => {
+    gtab.addEventListener('click', () => {
+        const group = gtab.dataset.group;
+        document.querySelectorAll('.gtab').forEach(g => g.classList.remove('active'));
+        gtab.classList.add('active');
+
+        const tabsInGroup = Array.from(document.querySelectorAll('.mtab')).filter(t => t.dataset.group === group);
+        document.querySelectorAll('.mtab').forEach(t => t.classList.toggle('hidden-group', t.dataset.group !== group));
+        if (tabsInGroup.length) tabsInGroup[0].click();
+    });
+});
+
+/* ─── Modelos tabs ────────────────────────────────────────────── */
+document.querySelectorAll('.mtab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const i = tab.dataset.panel;
+        document.querySelectorAll('.mtab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.mpanel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(`mp${i}`).classList.add('active');
+    });
+});
+
+
+/* ─── Smooth scroll (offset for fixed nav) ───────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        window.scrollTo({ top: t.offsetTop - nav.offsetHeight - 8, behavior: 'smooth' });
+    });
+});
+
+/* ─── Lead form → WhatsApp ───────────────────────────────────────── */
+document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const f = this;
+    const nombre    = f.nombre.value.trim();
+    const apellido  = f.apellido.value.trim();
+    const email     = f.email.value.trim();
+    const telefono  = f.telefono.value.trim();
+    const modeloTxt = f.modelo.options[f.modelo.selectedIndex]?.text || '';
+    const mensaje   = f.mensaje.value.trim();
+
+    const lines = [
+        'Hola, quiero solicitar información sobre Vista Parque Los Alpes.',
+        `Nombre: ${nombre} ${apellido}`,
+        `Correo: ${email}`,
+    ];
+    if (telefono) lines.push(`Teléfono: ${telefono}`);
+    if (f.modelo.value) lines.push(`Modelo de interés: ${modeloTxt}`);
+    if (mensaje) lines.push(`Mensaje: ${mensaje}`);
+
+    const btn = f.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Abriendo WhatsApp…';
+    btn.style.cssText += ';background:#2d6a4f;border-color:#2d6a4f;pointer-events:none;';
+
+    window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+
+    setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.cssText = '';
+        f.reset();
+    }, 2500);
+});
+</script>
+
+</body>
+</html>
