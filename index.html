@@ -394,12 +394,43 @@
     }
 
     .proy-img-wrap { position: relative; }
-    .proy-img-wrap img {
-        width: 100%; height: 560px;
-        object-fit: cover;
+    .proy-carousel {
+        position: relative;
+        width: 100%;
+        height: 560px;
         border-radius: var(--rlg);
+        overflow: hidden;
         box-shadow: var(--s-hard);
     }
+    .proy-carousel img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+    .proy-carousel img.active { opacity: 1; }
+    .proy-carousel-dots {
+        position: absolute;
+        bottom: 1.1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        gap: .5rem;
+    }
+    .proy-carousel-dot {
+        width: 8px; height: 8px;
+        padding: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,.5);
+        border: 1px solid rgba(255,255,255,.7);
+        transition: var(--ease);
+        cursor: pointer;
+    }
+    .proy-carousel-dot.active { background: var(--gold); border-color: var(--gold); }
     .proy-badge {
         position: absolute;
         bottom: -1.4rem; right: -1.4rem;
@@ -1131,8 +1162,8 @@
 
     <div class="hero-content">
         <p class="hero-eyebrow">Osorno, Región de Los Lagos · Un proyecto de Avifel</p>
-        <h1 class="hero-h1">La tranquilidad<br>del campo, la<br>comodidad de la ciudad</h1>
-        <p class="hero-p">Vista Parque Los Alpes propone redefinir la vida en la ciudad, integrando naturaleza, tranquilidad y conectividad en un solo lugar. Bienvenido al bienestar eficiente: ocho tipologías de departamentos y dúplex diseñadas para quienes eligen vivir mejor.</p>
+        <h1 class="hero-h1">La tranquilidad<br>del campo; la<br>comodidad de la ciudad</h1>
+        <p class="hero-p">Vista Parque Los Alpes propone redefinir la vida en la ciudad, integrando naturaleza, tranquilidad y conectividad en un solo lugar. Bienvenido al bienestar eficiente: ocho tipologías de departamentos - que incluyen cuatro dúplex - con amplios espacios y eficiencia energética de estándar europeo.</p>  
         <div class="hero-btns">
             <a href="#modelos" class="btn btn-gold">Conocer Modelos</a>
             <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-w" data-wa-msg="Hola, me gustaría recibir más información sobre Vista Parque Los Alpes.">Solicitar Información</a>
@@ -1148,12 +1179,21 @@
     <div class="proy-inner">
         <div class="rv">
             <p class="lbl">Nuestro Proyecto</p>
-            <h2 class="ttl">Diseñado para quienes<br>eligen vivir diferente</h2>
+            <h2 class="ttl">Un condominio<br>diseñado para ti.</h2>
         </div>
 
         <div class="proy-grid">
             <div class="proy-img-wrap rv">
-                <img src="Imagenes/web/Vista aerea.jpg" alt="Edificio Vista Parque Los Alpes">
+                <div class="proy-carousel" id="proyCarousel">
+                    <img src="Imagenes/condo1.png" alt="Vista Parque Los Alpes — Condominio" class="active">
+                    <img src="Imagenes/condo2.png" alt="Vista Parque Los Alpes — Condominio">
+                    <img src="Imagenes/condo3.png" alt="Vista Parque Los Alpes — Condominio">
+                    <div class="proy-carousel-dots">
+                        <button class="proy-carousel-dot active" data-slide="0" aria-label="Imagen 1"></button>
+                        <button class="proy-carousel-dot" data-slide="1" aria-label="Imagen 2"></button>
+                        <button class="proy-carousel-dot" data-slide="2" aria-label="Imagen 3"></button>
+                    </div>
+                </div>
                 <div class="proy-badge">
                     <div class="bn">8</div>
                     <div class="bt">Tipologías<br>Disponibles</div>
@@ -1161,7 +1201,7 @@
             </div>
 
             <div class="proy-content">
-                <p class="lbl rv">Enclave en la ciudad</p>
+                <p class="lbl rv">Enclave natural en la ciudad</p>
                 <p class="sub rv">Vista Parque Los Alpes es un proyecto que propone redefinir la vida en la ciudad, integrando naturaleza, tranquilidad y conectividad en un solo lugar.</p>
                 <p class="sub rv d1" style="margin-top:.9rem; color:var(--muted);">Sus amplios jardines, terrazas y vistas despejadas invitan a disfrutar del entorno endémico del sur de Chile, sin perder la conectividad a los servicios de la ciudad. Ocho tipologías de departamentos y dúplex diseñadas para brindar la comodidad y versatilidad que ofrece Osorno.</p>
 
@@ -1193,7 +1233,7 @@
         <div class="ubic-inner">
             <div class="ubic-text rv">
                 <p class="lbl">Cómo Llegar</p>
-                <h3>Ubicación Privilegiada en Osorno</h3>
+                <h3>Una ubicación inmejorable Osorno</h3>
                 <p>Santiago Rosas esq. Avenida Alemania — con conectividad a los servicios de la ciudad y el entorno natural del sur de Chile.</p>
                 <a href="https://www.google.com/maps/search/?api=1&query=Santiago+Rosas+esq.+Avenida+Alemania%2C+Osorno" target="_blank" rel="noopener" class="ubic-link">Abrir en Google Maps →</a>
             </div>
@@ -1208,94 +1248,6 @@
 <!-- ════════════════════════════════════════════════════════════
      ENTORNO
 ════════════════════════════════════════════════════════════ -->
-<section id="entorno">
-    <div class="ent-inner">
-        <div class="ent-head">
-            <p class="lbl rv">Entorno</p>
-            <h2 class="ttl rv">Un entorno pensado<br>para tu vida cotidiana</h2>
-            <p class="sub rv">Ubicado estratégicamente en Osorno, ciudad que hoy se consolida como uno de los polos urbanos más atractivos del sur de Chile, combinando tradición y una sólida proyección de futuro.</p>
-        </div>
-
-        <div class="ent-grid">
-            <div class="ent-card rv">
-                <div class="ent-ico">🎓</div>
-                <div class="ent-body">
-                    <strong>Educación</strong>
-                    <p>Colegios y centros de estudio de distintos niveles en el entorno de Osorno.</p>
-                    <ul>
-                        <li class="ent-poi">Colegios</li>
-                        <li class="ent-poi">Universidades</li>
-                        <li class="ent-poi">Jardines infantiles</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="ent-card rv d1">
-                <div class="ent-ico">🏥</div>
-                <div class="ent-body">
-                    <strong>Salud</strong>
-                    <p>Centros de salud y farmacias disponibles en la ciudad de Osorno.</p>
-                    <ul>
-                        <li class="ent-poi">Centros médicos</li>
-                        <li class="ent-poi">Clínicas</li>
-                        <li class="ent-poi">Farmacias</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="ent-card rv d2">
-                <div class="ent-ico">🛒</div>
-                <div class="ent-body">
-                    <strong>Comercio</strong>
-                    <p>Supermercados, tiendas y servicios esenciales dentro de la ciudad.</p>
-                    <ul>
-                        <li class="ent-poi">Supermercados</li>
-                        <li class="ent-poi">Comercio local</li>
-                        <li class="ent-poi">Servicios bancarios</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="ent-card rv d1">
-                <div class="ent-ico">🎭</div>
-                <div class="ent-body">
-                    <strong>Cultura y Recreación</strong>
-                    <p>Oferta cultural y gastronómica que ofrece la ciudad de Osorno.</p>
-                    <ul>
-                        <li class="ent-poi">Vida cultural</li>
-                        <li class="ent-poi">Restaurantes</li>
-                        <li class="ent-poi">Cafés</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="ent-card rv d2">
-                <div class="ent-ico">🚴</div>
-                <div class="ent-body">
-                    <strong>Movilidad</strong>
-                    <p>Conectividad vial y de transporte hacia los distintos sectores de la ciudad.</p>
-                    <ul>
-                        <li class="ent-poi">Conectividad vial</li>
-                        <li class="ent-poi">Transporte público</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="ent-card rv d3">
-                <div class="ent-ico">🌲</div>
-                <div class="ent-body">
-                    <strong>Naturaleza</strong>
-                    <p>El entorno endémico y las áreas verdes del sur de Chile como telón de fondo del proyecto.</p>
-                    <ul>
-                        <li class="ent-poi">Áreas verdes</li>
-                        <li class="ent-poi">Entorno natural</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <!-- ════════════════════════════════════════════════════════════
      MODELOS
@@ -1319,59 +1271,18 @@
 
     <!-- TABS -->
     <div class="mod-tabs">
-        <button class="mtab active" data-panel="0" data-group="deptos">Annecy · 73 m²</button>
-        <button class="mtab" data-panel="1" data-group="deptos">Brienz · 61 m²</button>
-        <button class="mtab" data-panel="2" data-group="deptos">Mont Blanc · 120 m²</button>
-        <button class="mtab" data-panel="3" data-group="deptos">Zermatt · 102 m²</button>
-        <button class="mtab hidden-group" data-panel="4" data-group="duplex">Ginebra · 139 m²</button>
+        <button class="mtab active" data-panel="0" data-group="deptos">Brienz · 61 m²</button>
+        <button class="mtab" data-panel="1" data-group="deptos">Annecy · 73 m²</button>
+        <button class="mtab" data-panel="2" data-group="deptos">Lugano · 102 m²</button>
+        <button class="mtab" data-panel="3" data-group="deptos">Mont Blanc · 120 m²</button>
+        <button class="mtab hidden-group" data-panel="4" data-group="duplex">Ginebra · 120 m²</button>
         <button class="mtab hidden-group" data-panel="5" data-group="duplex">Évian · 134 m²</button>
-        <button class="mtab hidden-group" data-panel="6" data-group="duplex">Samoëns · 136 m²</button>
-        <button class="mtab hidden-group" data-panel="7" data-group="duplex">Chamonix · 137 m²</button>
+        <button class="mtab hidden-group" data-panel="6" data-group="duplex">Garda · 136 m²</button>
+        <button class="mtab hidden-group" data-panel="7" data-group="duplex">Zurich · 137 m²</button>
     </div>
 
-    <!-- ── PANEL 0: ANNECY ───────────────────────────────────── -->
+    <!-- ── PANEL 0: BRIENZ ───────────────────────────────────── -->
     <div class="mpanel active" id="mp0">
-        <div class="mlayout">
-            <div class="mgal">
-                <div class="gal-main">
-                    <img src="Planos/web/Plano ANNECY B.jpg" alt="Plano Depto. Annecy">
-                    <span class="gal-badge">Depto. Annecy</span>
-                </div>
-                <div class="gal-secondary">
-                    <div class="gal-sec-item"><img src="Planos/web/Annecy.jpg" alt="Interior Depto. Annecy"></div>
-                </div>
-            </div>
-            <div>
-                <h3 class="mname">Depto. Annecy</h3>
-                <p class="mtag">Diseñado para crecer contigo</p>
-                <div class="mspecs">
-                    <div class="spec"><span class="sv">73</span><span class="sl">m² totales</span></div>
-                    <div class="spec"><span class="sv">2</span><span class="sl">Dormitorios</span></div>
-                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
-                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
-                </div>
-                <p class="mdesc">Departamento de 73 m² con 2 dormitorios y 2 baños, diseñado para crecer contigo. Incluye ventanas termopanel, cocina equipada, cielo aislante térmico y calefacción Inverter Euro A+ integrada, para un confort térmico óptimo y bajo consumo energético.</p>
-                <div class="mtags">
-                    <span class="tag">Ventanas Termopanel</span>
-                    <span class="tag">Cocina Equipada</span>
-                    <span class="tag">Cielo Aislante Térmico</span>
-                    <span class="tag">Calefacción Inverter Euro A+</span>
-                    <span class="tag">Piso Vinílico y Porcelanato</span>
-                </div>
-                <div class="mprice">
-                    <p class="pl">¿Te interesa este modelo?</p>
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Annecy de Vista Parque Los Alpes.">Consultar →</a>
-                </div>
-                <div class="mctas">
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Annecy de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── PANEL 1: BRIENZ ───────────────────────────────────── -->
-    <div class="mpanel" id="mp1">
         <div class="mlayout">
             <div class="mgal">
                 <div class="gal-main">
@@ -1405,14 +1316,96 @@
                 </div>
                 <div class="mctas">
                     <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Brienz de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── PANEL 2: MONT BLANC ───────────────────────────────── -->
+    <!-- ── PANEL 1: ANNECY ───────────────────────────────────── -->
+    <div class="mpanel" id="mp1">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano ANNECY B.jpg" alt="Plano Depto. Annecy">
+                    <span class="gal-badge">Depto. Annecy</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item"><img src="Planos/web/Annecy.jpg" alt="Interior Depto. Annecy"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Depto. Annecy</h3>
+                <p class="mtag">Diseñado para crecer contigo</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">73</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
+                </div>
+                <p class="mdesc">Departamento de 73 m² con 2 dormitorios y 2 baños, diseñado para crecer contigo. Incluye ventanas termopanel, cocina equipada, cielo aislante térmico y calefacción Inverter Euro A+ integrada, para un confort térmico óptimo y bajo consumo energético.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Annecy de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Annecy de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 2: LUGANO ───────────────────────────────────── -->
     <div class="mpanel" id="mp2">
+        <div class="mlayout">
+            <div class="mgal">
+                <div class="gal-main">
+                    <img src="Planos/web/Plano Zermatt.jpg" alt="Plano Depto. Lugano">
+                    <span class="gal-badge">Depto. Lugano</span>
+                </div>
+                <div class="gal-secondary">
+                    <div class="gal-sec-item"><img src="Planos/web/Zermatt.jpg" alt="Interior Depto. Lugano"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="mname">Depto. Lugano</h3>
+                <p class="mtag">Versatilidad para cada forma de vivir</p>
+                <div class="mspecs">
+                    <div class="spec"><span class="sv">102</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
+                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
+                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
+                </div>
+                <p class="mdesc">Departamento de 102 m² con 3 dormitorios y 2 baños. Versatilidad para cada forma de vivir, con terminaciones de piso vinílico y porcelanato en baño y terraza, y calefacción Inverter Euro A+.</p>
+                <div class="mtags">
+                    <span class="tag">Ventanas Termopanel</span>
+                    <span class="tag">Cocina Equipada</span>
+                    <span class="tag">Cielo Aislante Térmico</span>
+                    <span class="tag">Calefacción Inverter Euro A+</span>
+                    <span class="tag">Piso Vinílico y Porcelanato</span>
+                </div>
+                <div class="mprice">
+                    <p class="pl">¿Te interesa este modelo?</p>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Lugano de Vista Parque Los Alpes.">Consultar →</a>
+                </div>
+                <div class="mctas">
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Lugano de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PANEL 3: MONT BLANC ───────────────────────────────── -->
+    <div class="mpanel" id="mp3">
         <div class="mlayout">
             <div class="mgal">
                 <div class="gal-main">
@@ -1446,48 +1439,7 @@
                 </div>
                 <div class="mctas">
                     <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Mont Blanc de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── PANEL 3: ZERMATT ──────────────────────────────────── -->
-    <div class="mpanel" id="mp3">
-        <div class="mlayout">
-            <div class="mgal">
-                <div class="gal-main">
-                    <img src="Planos/web/Plano Zermatt.jpg" alt="Plano Depto. Zermatt">
-                    <span class="gal-badge">Depto. Zermatt</span>
-                </div>
-                <div class="gal-secondary">
-                    <div class="gal-sec-item"><img src="Planos/web/Zermatt.jpg" alt="Interior Depto. Zermatt"></div>
-                </div>
-            </div>
-            <div>
-                <h3 class="mname">Depto. Zermatt</h3>
-                <p class="mtag">Versatilidad para cada forma de vivir</p>
-                <div class="mspecs">
-                    <div class="spec"><span class="sv">102</span><span class="sl">m² totales</span></div>
-                    <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
-                    <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
-                    <div class="spec"><span class="sv">1</span><span class="sl">Nivel</span></div>
-                </div>
-                <p class="mdesc">Departamento de 102 m² con 3 dormitorios y 2 baños. Versatilidad para cada forma de vivir, con terminaciones de piso vinílico y porcelanato en baño y terraza, y calefacción Inverter Euro A+ en todos sus ambientes.</p>
-                <div class="mtags">
-                    <span class="tag">Ventanas Termopanel</span>
-                    <span class="tag">Cocina Equipada</span>
-                    <span class="tag">Cielo Aislante Térmico</span>
-                    <span class="tag">Calefacción Inverter Euro A+</span>
-                    <span class="tag">Piso Vinílico y Porcelanato</span>
-                </div>
-                <div class="mprice">
-                    <p class="pl">¿Te interesa este modelo?</p>
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Depto. Zermatt de Vista Parque Los Alpes.">Consultar →</a>
-                </div>
-                <div class="mctas">
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Depto. Zermatt de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
                 </div>
             </div>
         </div>
@@ -1512,12 +1464,12 @@
                 <h3 class="mname">Dúplex Ginebra</h3>
                 <p class="mtag">Estar familiar</p>
                 <div class="mspecs">
-                    <div class="spec"><span class="sv">139</span><span class="sl">m² totales</span></div>
+                    <div class="spec"><span class="sv">120</span><span class="sl">m² totales</span></div>
                     <div class="spec"><span class="sv">3</span><span class="sl">Dormitorios</span></div>
                     <div class="spec"><span class="sv">3</span><span class="sl">Baños</span></div>
                     <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
                 </div>
-                <p class="mdesc">Dúplex de 139 m² en dos plantas, con 3 dormitorios y 3 baños. Un estar familiar como corazón del segundo piso, pensado para disfrutar en familia con la comodidad y amplitud de todo el proyecto.</p>
+                <p class="mdesc">Dúplex de 120 m² en dos plantas, con 3 dormitorios y 3 baños. Un estar familiar como corazón del segundo piso, pensado para disfrutar en familia con la comodidad y amplitud de todo el proyecto.</p>
                 <div class="mtags">
                     <span class="tag">Estar Familiar</span>
                     <span class="tag">Ventanas Termopanel</span>
@@ -1532,7 +1484,7 @@
                 </div>
                 <div class="mctas">
                     <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Ginebra de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
                 </div>
             </div>
         </div>
@@ -1576,29 +1528,29 @@
                 </div>
                 <div class="mctas">
                     <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Évian de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── PANEL 6: SAMOËNS (DÚPLEX) ─────────────────────────── -->
+    <!-- ── PANEL 6: GARDA (DÚPLEX) ───────────────────────────── -->
     <div class="mpanel" id="mp6">
         <div class="mlayout">
             <div class="mgal">
                 <div class="gal-main">
-                    <img src="Planos/web/Plano SAMOENS 1.jpg" alt="Plano Dúplex Samoëns — Primer Piso">
-                    <span class="gal-badge">Dúplex Samoëns — Primer Piso</span>
+                    <img src="Planos/web/Plano SAMOENS 1.jpg" alt="Plano Dúplex Garda — Primer Piso">
+                    <span class="gal-badge">Dúplex Garda — Primer Piso</span>
                 </div>
                 <div class="gal-secondary">
                     <div class="gal-sec-item is-plan">
-                        <img src="Planos/web/Plano SAMOENS 2.jpg" alt="Plano Dúplex Samoëns — Segundo Piso">
+                        <img src="Planos/web/Plano SAMOENS 2.jpg" alt="Plano Dúplex Garda — Segundo Piso">
                         <span class="gal-sec-label">Segundo Piso</span>
                     </div>
                 </div>
             </div>
             <div>
-                <h3 class="mname">Dúplex Samoëns</h3>
+                <h3 class="mname">Dúplex Garda</h3>
                 <p class="mtag">Home office</p>
                 <div class="mspecs">
                     <div class="spec"><span class="sv">136</span><span class="sl">m² totales</span></div>
@@ -1606,7 +1558,7 @@
                     <div class="spec"><span class="sv">3</span><span class="sl">Baños</span></div>
                     <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
                 </div>
-                <p class="mdesc">Dúplex de 136 m² en dos plantas, con 2 dormitorios y 3 baños. Incluye un espacio de home office propio, ideal para trabajar desde casa sin perder comodidad.</p>
+                <p class="mdesc">Dúplex de 136 m² en dos plantas, con 2 dormitorios y 3 baños. Incluye un espacio de home office propio, ideal para trabajar desde casa sin perder comodidad. Cuenta con opciones de ampliación.</p>
                 <div class="mtags">
                     <span class="tag">Home Office</span>
                     <span class="tag">Ventanas Termopanel</span>
@@ -1617,33 +1569,33 @@
                 </div>
                 <div class="mprice">
                     <p class="pl">¿Te interesa este modelo?</p>
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Samoëns de Vista Parque Los Alpes.">Consultar →</a>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Garda de Vista Parque Los Alpes.">Consultar →</a>
                 </div>
                 <div class="mctas">
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Samoëns de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Garda de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── PANEL 7: CHAMONIX (DÚPLEX) ────────────────────────── -->
+    <!-- ── PANEL 7: ZURICH (DÚPLEX) ──────────────────────────── -->
     <div class="mpanel" id="mp7">
         <div class="mlayout">
             <div class="mgal">
                 <div class="gal-main">
-                    <img src="Planos/web/Plano CHAMONIX 1.jpg" alt="Plano Dúplex Chamonix — Primer Piso">
-                    <span class="gal-badge">Dúplex Chamonix — Primer Piso</span>
+                    <img src="Planos/web/Plano CHAMONIX 1.jpg" alt="Plano Dúplex Zurich — Primer Piso">
+                    <span class="gal-badge">Dúplex Zurich — Primer Piso</span>
                 </div>
                 <div class="gal-secondary">
                     <div class="gal-sec-item is-plan">
-                        <img src="Planos/web/Plano CHAMONIX 2.jpg" alt="Plano Dúplex Chamonix — Segundo Piso">
+                        <img src="Planos/web/Plano CHAMONIX 2.jpg" alt="Plano Dúplex Zurich — Segundo Piso">
                         <span class="gal-sec-label">Segundo Piso</span>
                     </div>
                 </div>
             </div>
             <div>
-                <h3 class="mname">Dúplex Chamonix</h3>
+                <h3 class="mname">Dúplex Zurich</h3>
                 <p class="mtag">Estudio Lounge</p>
                 <div class="mspecs">
                     <div class="spec"><span class="sv">137</span><span class="sl">m² totales</span></div>
@@ -1651,7 +1603,7 @@
                     <div class="spec"><span class="sv">2</span><span class="sl">Baños</span></div>
                     <div class="spec"><span class="sv">2</span><span class="sl">Plantas</span></div>
                 </div>
-                <p class="mdesc">Dúplex de 137 m² en dos plantas, con 1 dormitorio y 2 baños. Cuenta con un estudio lounge propio, un ambiente versátil para recibir invitados o disfrutar con calma.</p>
+                <p class="mdesc">Dúplex de 137 m² en dos plantas, con 1 dormitorio y 2 baños. Cuenta con un estudio lounge propio, un ambiente versátil para recibir invitados o disfrutar con calma. Cuenta con opciones de ampliación.</p>
                 <div class="mtags">
                     <span class="tag">Estudio Lounge</span>
                     <span class="tag">Ventanas Termopanel</span>
@@ -1662,11 +1614,11 @@
                 </div>
                 <div class="mprice">
                     <p class="pl">¿Te interesa este modelo?</p>
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Chamonix de Vista Parque Los Alpes.">Consultar →</a>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;" data-wa-msg="Hola, quiero consultar por el Dúplex Zurich de Vista Parque Los Alpes.">Consultar →</a>
                 </div>
                 <div class="mctas">
-                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Chamonix de Vista Parque Los Alpes.">Agendar Visita</a>
-                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Descargar Ficha</button>
+                    <a href="https://wa.me/56994447132" target="_blank" rel="noopener" class="btn btn-outline-n" style="flex:1;justify-content:center;" data-wa-msg="Hola, quiero agendar una visita para conocer el Dúplex Zurich de Vista Parque Los Alpes.">Agendar Visita</a>
+                    <button class="btn btn-outline-n" style="flex:1;justify-content:center;">Tour Virtual</button>
                 </div>
             </div>
         </div>
@@ -1680,7 +1632,7 @@
 <section id="nosotros">
     <div class="nos-media">
         <div class="nos-img rv">
-            <img src="Imagenes/web/Pareja2.jpeg" alt="Pareja disfrutando con calma de Vista Parque Los Alpes">
+            <img src="Imagenes/Mapa.png" alt="Mapa de ubicación Vista Parque Los Alpes">
             <div class="nos-quote">
                 <p>"Bienvenido al bienestar eficiente"</p>
                 <cite>Vista Parque Los Alpes</cite>
@@ -1693,8 +1645,8 @@
             <p class="lbl rv" style="color:var(--gold);">Quiénes Somos</p>
             <h2 class="ttl rv" style="color:var(--white);">Una visión de bienestar<br>hecha realidad</h2>
             <div class="divider rv"></div>
-            <p class="sub rv" style="color:rgba(255,255,255,.62);">Vista Parque Los Alpes es un proyecto de Avifel, sinónimo de calidad y responsabilidad en el sur de Chile.</p>
-            <p class="sub rv d1" style="color:rgba(255,255,255,.52); margin-top:.9rem;">Sus amplios jardines, terrazas y vistas despejadas invitan a disfrutar del entorno endémico del sur de Chile, sin perder la conectividad a los servicios de la ciudad de Osorno.</p>
+            <p class="sub rv" style="color:rgba(255,255,255,.62);">Vista Parque Los Alpes está ubicado a pasos del colegio Alianza Francesa y es colindante al condominio Portal Los Alpes de Avifel, primer proyecto en el sur de Chile con Energías Renovables No Convencionales incorporadas y estándar europeo de purificación de aire Passivhaus.</p>
+            <p class="sub rv d1" style="color:rgba(255,255,255,.52); margin-top:.9rem;">Las áreas naturales protegidas corresponden a los ecosistemas del Humedal Urbano Las Quemas, que destaca por su presencia de flora hidrofita y árboles, principalmente nativos.</p>
         </div>
 
         <div class="valores">
@@ -1741,15 +1693,15 @@
                 </div>
                 <div class="cdet rv d2">
                     <div class="cdet-ico">📞</div>
-                    <div class="cdet-txt"><strong>Teléfono</strong><span>+569 9444 7132</span></div>
+                    <div class="cdet-txt"><strong>Teléfono</strong><span>+569 9444 7132 | +569 9444 3321</span></div>
                 </div>
                 <div class="cdet rv d3">
                     <div class="cdet-ico">✉️</div>
                     <div class="cdet-txt"><strong>Correo Electrónico</strong><span>vistaparquelosalpes@avifel.cl</span></div>
                 </div>
                 <div class="cdet rv d4">
-                    <div class="cdet-ico">🕐</div>
-                    <div class="cdet-txt"><strong>Horario de Atención</strong><span>Lunes a Viernes 9:00 – 18:00 hrs · Sábados 10:00 – 14:00 hrs</span></div>
+                    <div class="cdet-ico">📷</div>
+                    <div class="cdet-txt"><strong>Instagram</strong><span><a href="https://www.instagram.com/eceaosorno" target="_blank" rel="noopener">@eceaosorno</a></span></div>
                 </div>
             </div>
         </div>
@@ -1780,14 +1732,14 @@
                         <label for="modelo">Modelo de Interés</label>
                         <select id="modelo" name="modelo">
                             <option value="">Selecciona un modelo</option>
-                            <option value="annecy">Depto. Annecy · 73 m²</option>
                             <option value="brienz">Depto. Brienz · 61 m²</option>
+                            <option value="annecy">Depto. Annecy · 73 m²</option>
+                            <option value="lugano">Depto. Lugano · 102 m²</option>
                             <option value="montblanc">Depto. Mont Blanc · 120 m²</option>
-                            <option value="zermatt">Depto. Zermatt · 102 m²</option>
-                            <option value="ginebra">Dúplex Ginebra · 139 m²</option>
+                            <option value="ginebra">Dúplex Ginebra · 120 m²</option>
                             <option value="evian">Dúplex Évian · 134 m²</option>
-                            <option value="samoens">Dúplex Samoëns · 136 m²</option>
-                            <option value="chamonix">Dúplex Chamonix · 137 m²</option>
+                            <option value="garda">Dúplex Garda · 136 m²</option>
+                            <option value="zurich">Dúplex Zurich · 137 m²</option>
                         </select>
                     </div>
                     <div class="fi full">
@@ -1815,7 +1767,7 @@
                 <p class="fbrand-tag">Bienvenido al Bienestar Eficiente</p>
                 <p>Un proyecto de Avifel. Santiago Rosas esq. Avenida Alemania, Osorno, Región de Los Lagos, Chile.</p>
                 <div class="fsocial">
-                    <a href="#" class="slink" aria-label="Instagram">
+                    <a href="https://www.instagram.com/eceaosorno" target="_blank" rel="noopener" class="slink" aria-label="Instagram">
                         <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                     </a>
                     <a href="#" class="slink" aria-label="Facebook">
@@ -1842,14 +1794,14 @@
             <div class="fcol">
                 <h4>Modelos</h4>
                 <ul>
-                    <li><a href="#modelos">Depto. Annecy · 73 m²</a></li>
                     <li><a href="#modelos">Depto. Brienz · 61 m²</a></li>
+                    <li><a href="#modelos">Depto. Annecy · 73 m²</a></li>
+                    <li><a href="#modelos">Depto. Lugano · 102 m²</a></li>
                     <li><a href="#modelos">Depto. Mont Blanc · 120 m²</a></li>
-                    <li><a href="#modelos">Depto. Zermatt · 102 m²</a></li>
-                    <li><a href="#modelos">Dúplex Ginebra · 139 m²</a></li>
+                    <li><a href="#modelos">Dúplex Ginebra · 120 m²</a></li>
                     <li><a href="#modelos">Dúplex Évian · 134 m²</a></li>
-                    <li><a href="#modelos">Dúplex Samoëns · 136 m²</a></li>
-                    <li><a href="#modelos">Dúplex Chamonix · 137 m²</a></li>
+                    <li><a href="#modelos">Dúplex Garda · 136 m²</a></li>
+                    <li><a href="#modelos">Dúplex Zurich · 137 m²</a></li>
                 </ul>
             </div>
 
@@ -1941,6 +1893,31 @@ const so = new IntersectionObserver(
     { threshold: .35 }
 );
 sections.forEach(s => so.observe(s));
+
+/* ─── Proyecto: carrusel de imágenes ─────────────────────────── */
+(function () {
+    const carousel = document.getElementById('proyCarousel');
+    if (!carousel) return;
+    const slides = carousel.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.proy-carousel-dot');
+    let current = 0;
+    let timer;
+
+    function goTo(i) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = i;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+    }
+    function next() { goTo((current + 1) % slides.length); }
+    function startAuto() {
+        clearInterval(timer);
+        timer = setInterval(next, 4500);
+    }
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); startAuto(); }));
+    startAuto();
+})();
 
 /* ─── Modelos: group tabs (Departamentos / Dúplex) ──────────────── */
 document.querySelectorAll('.gtab').forEach(gtab => {
